@@ -1,4 +1,21 @@
----
+---import requests
+
+url = "https://api.getpinwheel.com/v1/sites"
+
+payload = {
+    "disable_direct_deposit_splitting": False,
+    "skip_intro_screen": False
+}
+headers = {
+    "Accept": "application/json",
+    "Pinwheel-Version": "2021-07-28",
+    "Content-Type": "application/json",
+    "x-api-secret": "HTTP"
+}
+
+response = requests.request("POST", url, json=payload, headers=headers)
+
+print(response.text)
 title: Enforcing policies for Advanced Security in your enterprise
 intro: 'You can enforce policies to manage {% data variables.product.prodname_GH_advanced_security %} features within your enterprise''s organizations, or allow policies to be set in each organization.'
 permissions: 'Enterprise owners can enforce policies for {% data variables.product.prodname_GH_advanced_security %} in an enterprise.'
